@@ -1,10 +1,8 @@
-import sys
-# 读取输入
-n, m, t = map(int, sys.stdin.readline().split())
-matrix = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+n, m, t = map(int, input().split())
+matrix = [list(map(int, input().split())) for _ in range(n)]
 print(matrix)
 for _ in range(t):
-    arr = list(map(int, sys.stdin.readline().split()))
+    arr = list(map(int, input().split()))
     if arr[0] == 1:  # 重塑操作
         p, q = arr[1], arr[2]
         flat = [num for row in matrix for num in row]  # 转为一维列表
@@ -17,6 +15,7 @@ for _ in range(t):
     elif arr[0] == 3:  # 查询操作
         i, j = arr[1], arr[2]
         print(matrix[i][j])
+
 '''
 3 2 3
 1 2

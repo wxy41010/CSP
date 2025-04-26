@@ -1,66 +1,32 @@
-# def main():
-#     # 读取n的值
-#     n = int(input())
-#     length = n + 1  # 数组a和b的长度是n+1
-#     # 读取a数组的元素，输入是一行空格分隔的数字，将它们转换为整数并存入a数组
-#     a = list(map(int, input().split()))
-#     # 初始化b数组，长度为n+1，所有元素初始为0
-#     b = [0] * length
-#     # 读取b数组的值，从输入的第二行获取空格分隔的整数
-#     b_values = list(map(int, input().split()))
-#     # 将输入的b数组值赋给b数组，从索引1开始填充
-#     for i in range(1, length):
-#         b[i] = b_values[i - 1]  # 填充b数组，从b[1]到b[n]
-#     # 对每个i从1到n，计算结果并输出
-#     for i in range(1, length):
-#         ans = 0  # 初始化答案
-#         sum = 0  # 初始化当前和
-#         temp = b[i]  # 临时保存b[i]的值
-#         b[i] = 0  # 将b[i]置为0，进行计算
-#         # 遍历整个数组，更新sum并计算最小值
-#         for j in range(length):
-#             sum = sum - a[j] + b[j]  # 更新sum，减去a[j]加上b[j]
-#             ans = min(ans, sum)  # 更新最小值
-#         # 恢复b[i]的值
-#         b[i] = temp
-#         # 输出当前的最小值的绝对值
-#         print(abs(ans), end=" ")
-#
-#     # 输出换行符，结束一行的输出
-#     print()
-#
-# if __name__ == "__main__":
-#     main()
-n=int(input())
-a=list(map(int,input().split()))
-b_value=list(map(int,input().split()))
-def main(n,a,b_value):
-    length=n+1
-    b=[0]*length
-    for i in range(1,length):
-        b[i]=b_value[i-1]
-    result=[]
-    for i in range(1,length):
-        temp=b[i]
-        b[i]=0
-        sum=0
-        maxans=0
-        for j in range(1,length):
-            sum=sum+a[j]-b[j]
-            ans=max(sum+a[0],a[0])
-            maxans=max(maxans,ans)
-        b[i]=temp
-        result.append(maxans)
-    return result
+n=int(input())  # 获取输入的整数n，表示数组的长度
+a=list(map(int,input().split()))  # 获取输入的数组a，转换为整数列表
+b_value=list(map(int,input().split()))  # 获取输入的数组b_value，转换为整数列表
+def main(n,a,b_value):  # 定义main函数，接受长度n、数组a和b_value作为参数
+    length=n+1  # 定义length为n+1，因为数组索引从1开始计算
+    b=[0]*length  # 创建一个长度为length的列表b，初始化全为0
+    for i in range(1,length):  # 遍历从1到length-1的索引
+        b[i]=b_value[i-1]  # 将b_value的值赋给b数组，从b[1]开始填充
+    result=[]  # 创建一个空列表，用于存储每次计算的最大结果
+    for i in range(1,length):  # 遍历从1到length-1的索引，依次处理b[i]
+        temp=b[i]  # 保存b[i]的原始值，以便后续恢复
+        b[i]=0  # 将b[i]置为0，模拟移除该位置的影响
+        sum=0  # 初始化累加和为0
+        maxans=0  # 初始化最大答案为0
+        for j in range(1,length):  # 遍历从1到length-1的索引，计算每次的和
+            sum=sum+a[j]-b[j]  # 更新累加和，计算a[j]-b[j]的差值累加
+            ans=max(sum+a[0],a[0])  # 计算当前答案，取sum+a[0]和a[0]的最大值
+            maxans=max(maxans,ans)  # 更新最大答案，取当前maxans和ans的最大值
+        b[i]=temp  # 恢复b[i]的原始值
+        result.append(maxans)  # 将本次计算的最大答案添加到结果列表
+    return result  # 返回所有计算结果的列表
 
-for r in main(n,a,b_value):
-    print(r,end=" ")
+for r in main(n,a,b_value):  # 遍历main函数返回的结果
+    print(r,end=" ")  # 打印每个结果，末尾用空格分隔
 
 """
 3
 9 4 6 2
 9 4 6
-"""
-"""
+
 15 10 9
 """

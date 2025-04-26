@@ -1,30 +1,15 @@
-# n=int(input())
-# dict={}
-# result=[]
-# for step in range(n):
-#     matrix=tuple(input().strip() for _ in range(8))
-#     if matrix in dict:
-#         dict[matrix]+=1
-#     else:
-#         dict[matrix]=1
-#     result.append(dict[matrix])
-# for i in range(n):
-#     print(result[i])
-
-
-
-n=int(input())
-dic={}
-result=[]
-for _ in range(n):
-    step=tuple(input().strip()for _ in range(8))
-    if step in dic:
-        dic[step]+=1
-    else:
-        dic[step]=1
-    result.append(dic[step])
-for i in range(n):
-    print(result[i])
+n=int(input())  # 获取输入的整数n，表示需要处理的模式数量
+dic={}  # 创建一个空字典，用于存储每种模式的出现次数
+result=[]  # 创建一个空列表，用于存储每次输入模式时的计数结果
+for _ in range(n):  # 循环n次，处理每个模式
+    step=tuple(input().strip()for _ in range(8))  # 获取8行输入，去除首尾空格，转换为元组表示一个模式
+    if step in dic:  # 检查该模式是否已在字典中
+        dic[step]+=1  # 如果存在，该模式的计数加1
+    else:  # 如果该模式是新的
+        dic[step]=1  # 初始化该模式的计数为1
+    result.append(dic[step])  # 将当前模式的计数添加到结果列表
+for i in range(n):  # 遍历结果列表的索引
+    print(result[i])  # 打印每次输入模式时的计数
 """
 8
 ********

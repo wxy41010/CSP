@@ -1,52 +1,19 @@
-# def process_queries():
-#     # Step 1: 读取输入数据
-#     initial_str = input()[1:-1]  # 去掉两侧的井号 #
-#     n = int(input())  # 替换对的数量
-#     replace_dict = {}
-#
-#     # Step 2: 构建替换函数
-#     for _ in range(n):
-#         rule = input()[1:-1]  # 去掉井号 #
-#         f_from, f_to = rule[0], rule[1]
-#         replace_dict[f_from] = f_to
-#
-#     # Step 3: 读取查询数量
-#     m = int(input())  # 查询次数
-#     queries = list(map(int, input().split()))  # 查询的次数列表
-#
-#     # Step 4: 定义替换函数
-#     def transform(s, k):
-#         for _ in range(k):
-#             s = ''.join(replace_dict.get(ch, ch) for ch in s)
-#         return s
-#
-#     # Step 5: 对每个查询进行处理并输出结果
-#     for k in queries:
-#         result = transform(initial_str, k)
-#         print(f"#{result}#")
-#
-# # 调用函数执行
-# process_queries()
-
-
-# def main():
-#     initstr=input()[1:-1]
-#     n=int(input())
-#     replace={}
-#     for _ in range (n):
-#         tran=input()[1:-1]
-#         f_from,f_to=tran[0],tran[1]
-#         replace[f_from]=f_to
-#     m=int(input())
-#     list1=list(map(int,input().split()))
-#     def transform(s,m):
-#         for _ in range(m):
-#             s="".join(replace.get(ch,ch) for ch in s)
-#         return s
-#     for k in list1:
-#         result=transform(initstr,k)
-#         print(f"#{result}#")
-# main()
+# arr=input()[1:-1]  # 获取用户输入的字符串，并去掉首尾字符（通常是括号或引号）
+# n=int(input())  # 获取替换规则的数量，并转换为整数
+# replace={}  # 创建一个空字典，用于存储字符替换规则
+# for _ in range(n):  # 循环n次，处理每条替换规则
+#     char=input()[1:-1]  # 获取用户输入的替换对字符串，并去掉首尾字符
+#     f_from,f_to=char[0],char[1]  # 从替换对中提取起始字符f_from和目标字符f_to
+#     replace[f_from]=f_to  # 将替换规则（f_from -> f_to）存入字典
+# m=int(input())  # 获取需要处理的替换次数列表的长度，并转换为整数
+# list1=list(map(int,input().split()))  # 获取替换次数列表，转换为整数列表
+# def main(replace,list1):  # 定义main函数，接受替换规则字典和替换次数列表作为参数
+#     for k in list1:  # 遍历替换次数列表中的每个数字k
+#         s=arr  # 将初始字符串arr赋值给变量s
+#         for _ in range(k):  # 对字符串执行k次替换操作
+#             s="".join(replace.get(ch,ch)for ch in s)  # 对s中的每个字符ch应用替换规则，若无规则则保持原字符
+#         print(f"#{s}#")  # 打印替换后的字符串，首尾添加'#'符号
+# main(replace,list1)  # 调用main函数，传入替换规则和替换次数列表
 
 """
 #Hello World#
@@ -59,50 +26,8 @@
 #ao#
 3
 1 2 3
-"""
 
-"""
 #H llarWaeld#
 #HrlloeWo ld#
 #Hella Warld#
 """
-# # 读取输入数据
-# initstr = input().strip()[1:-1]  # 读取并去掉前后引号
-# n = int(input().strip())  # 读取替换规则的个数
-# replace = {}
-# # 读取替换规则
-# for _ in range(n):
-#     tran = input().strip()[1:-1]  # 读取并去掉前后引号
-#     f_from, f_to = tran[0], tran[1]  # 获取替换对
-#     replace[f_from] = f_to
-# # 读取转换次数
-# m = int(input().strip())
-# # 读取转换步数的列表
-# list1 = list(map(int, input().split()))
-# def main():
-#     """执行字符串转换并输出结果"""
-#     for k in list1:
-#         s = initstr
-#         for _ in range(k):
-#             s = "".join(replace.get(ch, ch) for ch in s)
-#         print(f"#{s}#")
-# # 运行主函数
-# main()
-
-
-arr=input()[1:-1]
-n=int(input())
-replace={}
-for _ in range(n):
-    char=input()[1:-1]
-    f_from,f_to=char[0],char[1]
-    replace[f_from]=f_to
-m=int(input())
-list1=list(map(int,input().split()))
-def main(replace,list1):
-    for k in list1:
-        s=arr
-        for _ in range(k):
-            s="".join(replace.get(ch,ch)for ch in s)
-        print(f"#{s}#")
-main(replace,list1)
